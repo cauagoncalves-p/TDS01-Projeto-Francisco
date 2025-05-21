@@ -38,6 +38,7 @@ namespace GPSFrancisco
             //executando o método desabilitar campos
             desabilitarCampos();
             txtUsuario.Text = nome;
+            buscarUsuarioExistente(txtUsuario.Text);
         }
 
         //desabilitar campos
@@ -62,6 +63,18 @@ namespace GPSFrancisco
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
             btnLimpar.Enabled = true;
+            btnNovo.Enabled = false;
+            txtUsuario.Focus();
+        }
+        public void habilitarCamposUsuarioExistente() 
+        {
+            txtUsuario.Enabled = true;
+            txtSenha.Enabled = true;
+            txtValidaSenha.Enabled = true;
+            btnCadastrar.Enabled = false;
+            btnAlterar.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnLimpar.Enabled = false;
             btnNovo.Enabled = false;
             txtUsuario.Focus();
         }
@@ -208,7 +221,7 @@ namespace GPSFrancisco
             comm.Parameters.Clear();
 
             comm.Parameters.Add("@nome", MySqlDbType.VarChar, 50).Value = usuario;
-            comm.Parameters.Add("@senha", MySqlDbType.VarChar, 12).Value = usuario;
+            comm.Parameters.Add("@senha", MySqlDbType.VarChar, 12).Value = senha;
 
             comm.Connection = conexao.ObterConexao();
 
@@ -242,19 +255,46 @@ namespace GPSFrancisco
 
         //Método alterar usuario
 
-        private void alterarUsuario() {
-            MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "update tbUsuarios set nome = @nome, senha = @senha where codUsu = @codUsu";
+        private int alterarUsuario(string usuario, string senha,int codUsu) {
+            MySqlCommand comm = new MySqlCommand( );
+            comm.CommandText = "update tbUsuarios set nome = @nome, senha = @senha where codUsu = " + codUsu;
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
-            //comm.Parameters.Add("@nome",MySqlDbType.VarChar,50).Value = usuario;
+            comm.Parameters.Add("@nome",MySqlDbType.VarChar,50).Value = usuario;
+            comm.Parameters.Add("@senha",MySqlDbType.VarChar,12).Value = senha ;
 
             comm.Connection = conexao.ObterConexao();
 
+            int resp = comm.ExecuteNonQuery();
             conexao.FecharConexao();
+
+            return resp;
+
         }
 
+        // Excluir usuario 
+
+        private int excluirUsuario(int codUsu) 
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "delete from tbUsuarios where codUsu = @codUsu;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("codUsu", MySqlDbType.Int32).Value = codUsu;
+            comm.Connection = conexao.ObterConexao();
+
+            int resp = comm.ExecuteNonQuery();
+
+            conexao.FecharConexao();
+
+            desabilitarCampos();
+            limparCampos();
+
+            return resp;
+
+        }
         private void buscarPorCodigo() 
         {
             MySqlCommand comm = new MySqlCommand();
@@ -282,6 +322,67 @@ namespace GPSFrancisco
             frmPesquisar frmPesquisar = new frmPesquisar();
             frmPesquisar.ShowDialog();
             this.Show();
+        }
+
+        private void buscarUsuarioExistente(string usuario)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbUsuarios where nome = @nome;";
+            comm.CommandType = CommandType.Text;
+
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 50).Value = usuario;
+
+            comm.Connection = conexao.ObterConexao();
+
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
+            txtUsuario.Text = DR.GetString(1);
+            txtSenha.Text = DR.GetString(2);
+
+            conexao.FecharConexao();
+
+            habilitarCamposUsuarioExistente();
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            if (alterarUsuario(txtUsuario.Text,txtSenha.Text,int.Parse(txtCodigo.Text)) == 1 ){
+                MessageBox.Show("Usuario alterado com sucesso", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                desabilitarCampos();
+                limparCampos();
+            }
+            else {
+                MessageBox.Show("Erro ao alterar", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            DialogResult excluir = MessageBox.Show("Deseja excluir o usuario?", "mensagem do sistema",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (excluir == DialogResult.Yes)
+            {
+                if (excluirUsuario(int.Parse(txtCodigo.Text)) == 1)
+                {
+                    MessageBox.Show("Usuario excluido com sucesso", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    desabilitarCampos();
+                    limparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario não excluido", "mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    desabilitarCampos();
+                    limparCampos();
+                }
+            }
+            else{
+            }
         }
     }
 }
