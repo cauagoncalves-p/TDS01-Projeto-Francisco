@@ -32,6 +32,7 @@
             this.btnVoltar = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnVoluntarios = new System.Windows.Forms.Button();
+            this.btnAtribuicao = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnVoltar
@@ -72,16 +73,33 @@
             this.btnVoluntarios.Text = "V&oluntários";
             this.btnVoluntarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnVoluntarios.UseVisualStyleBackColor = true;
+            this.btnVoluntarios.Click += new System.EventHandler(this.btnVoluntarios_Click);
+            // 
+            // btnAtribuicao
+            // 
+            this.btnAtribuicao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAtribuicao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtribuicao.Image = ((System.Drawing.Image)(resources.GetObject("btnAtribuicao.Image")));
+            this.btnAtribuicao.Location = new System.Drawing.Point(384, 29);
+            this.btnAtribuicao.Name = "btnAtribuicao";
+            this.btnAtribuicao.Size = new System.Drawing.Size(154, 222);
+            this.btnAtribuicao.TabIndex = 5;
+            this.btnAtribuicao.Text = "&Atribuição ";
+            this.btnAtribuicao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAtribuicao.UseVisualStyleBackColor = true;
+            this.btnAtribuicao.Click += new System.EventHandler(this.btnAtribuicao_Click);
             // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 450);
+            this.Controls.Add(this.btnAtribuicao);
             this.Controls.Add(this.btnVoluntarios);
             this.Controls.Add(this.btnUsuarios);
             this.Controls.Add(this.btnVoltar);
             this.Name = "frmMenuPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenuPrincipal";
             this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.ResumeLayout(false);
@@ -92,5 +110,6 @@
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnVoluntarios;
+        private System.Windows.Forms.Button btnAtribuicao;
     }
 }

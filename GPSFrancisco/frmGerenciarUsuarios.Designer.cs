@@ -315,6 +315,7 @@
             this.Controls.Add(this.pnlCRUD);
             this.Controls.Add(this.gpbInformacoesUsuarios);
             this.Name = "frmGerenciarUsuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmGerenciarUsuarios";
             this.Load += new System.EventHandler(this.frmGerenciarUsuarios_Load);
             this.pnlCRUD.ResumeLayout(false);

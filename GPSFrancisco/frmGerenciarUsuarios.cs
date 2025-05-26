@@ -97,9 +97,10 @@ namespace GPSFrancisco
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            frmMenuPrincipal abrir = new frmMenuPrincipal();
-            abrir.Show();
             this.Hide();
+            frmMenuPrincipal abrir = new frmMenuPrincipal();
+            abrir.ShowDialog();
+            this.Show();
         }
 
         private void frmGerenciarUsuarios_Load(object sender, EventArgs e)

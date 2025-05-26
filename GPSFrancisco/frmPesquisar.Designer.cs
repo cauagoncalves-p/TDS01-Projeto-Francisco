@@ -133,6 +133,7 @@
             this.ClientSize = new System.Drawing.Size(984, 561);
             this.Controls.Add(this.gpxPesquisar);
             this.Name = "frmPesquisar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPesquisar";
             this.gpxPesquisar.ResumeLayout(false);
             this.gpxPesquisar.PerformLayout();

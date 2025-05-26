@@ -79,6 +79,7 @@
             this.Controls.Add(this.lblPorcentagem);
             this.Controls.Add(this.pgbPorcentagem);
             this.Name = "frmSplash";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSplash";
             this.Load += new System.EventHandler(this.frmSplash_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).EndInit();
