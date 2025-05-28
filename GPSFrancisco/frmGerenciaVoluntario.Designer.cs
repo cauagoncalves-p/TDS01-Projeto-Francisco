@@ -336,6 +336,7 @@
             this.cbxAtribuicao.Name = "cbxAtribuicao";
             this.cbxAtribuicao.Size = new System.Drawing.Size(193, 28);
             this.cbxAtribuicao.TabIndex = 22;
+            this.cbxAtribuicao.SelectedIndexChanged += new System.EventHandler(this.cbxAtribuicao_SelectedIndexChanged);
             // 
             // cbStatus
             // 

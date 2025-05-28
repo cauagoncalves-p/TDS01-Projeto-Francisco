@@ -21,7 +21,7 @@ namespace GPSFrancisco
 
         public int cadastrarVoluntario(string nome, string email, string telCel,string endereco,
             string cep,string numero, string bairro, string cidade, string estado, 
-            int codAtr, DateTime data, DateTime hora, int status) 
+            DateTime data, DateTime hora, int status) 
         {
             MySqlCommand comm = new MySqlCommand();
             comm.CommandText = "insert into tbVoluntario(nome,email,telCel,endereco,numero,cep,bairro,cidade,estado,codAtr,data_,hora,status_) values (@nome,@email,@telCel,@endereco,@numero,@cep,@bairro,@cidade,@estado,@codAtr,@data_,@hora,@status_);";
@@ -37,7 +37,7 @@ namespace GPSFrancisco
             comm.Parameters.Add("@bairro", MySqlDbType.VarChar, 100).Value = bairro;
             comm.Parameters.Add("@cidade", MySqlDbType.VarChar, 100).Value = cidade;
             comm.Parameters.Add("@estado", MySqlDbType.VarChar, 2).Value = estado;
-            comm.Parameters.Add("@codAtr", MySqlDbType.Int32).Value = codAtr;
+            comm.Parameters.Add("@codAtr", MySqlDbType.Int32).Value = codigoAtribuicao;
             comm.Parameters.Add("@data_", MySqlDbType.Date).Value = data;
             comm.Parameters.Add("@hora", MySqlDbType.Time).Value = hora;
             comm.Parameters.Add("@status_", MySqlDbType.Bit).Value = status;
@@ -77,6 +77,36 @@ namespace GPSFrancisco
             frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
             frmMenuPrincipal.ShowDialog();  
             this.Show();
+        }
+
+        private int buscarCodigoAtribuicoes(string nome)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select codAtr from tbAtribuicao where nome = @nome;";
+            comm.CommandType = CommandType.Text;    
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = nome;
+
+            comm.Connection = conexao.ObterConexao();
+
+            MySqlDataReader DR;
+
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            int res = DR.GetInt32(0);
+
+            conexao.FecharConexao();
+
+            return res;
+
+            
+        }
+        int codigoAtribuicao;
+        private void cbxAtribuicao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            codigoAtribuicao = buscarCodigoAtribuicoes(cbxAtribuicao.SelectedItem.ToString());
         }
     }
 }
