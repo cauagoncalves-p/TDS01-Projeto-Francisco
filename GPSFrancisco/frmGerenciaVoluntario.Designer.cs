@@ -40,13 +40,13 @@
             this.lblNumero = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.lblEndereco = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.mkdCEP = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.mkdTelefone = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
             this.txtEndereco = new System.Windows.Forms.TextBox();
+            this.lblCep = new System.Windows.Forms.Label();
+            this.mkdCEP = new System.Windows.Forms.MaskedTextBox();
+            this.lblTelefone = new System.Windows.Forms.Label();
+            this.mkdTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
@@ -68,6 +68,8 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
+            this.lblComplemento = new System.Windows.Forms.Label();
             this.gpbVoluntario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFotoVoluntario)).BeginInit();
             this.gpxDirigente.SuspendLayout();
@@ -76,6 +78,8 @@
             // 
             // gpbVoluntario
             // 
+            this.gpbVoluntario.Controls.Add(this.lblComplemento);
+            this.gpbVoluntario.Controls.Add(this.txtComplemento);
             this.gpbVoluntario.Controls.Add(this.pcbFotoVoluntario);
             this.gpbVoluntario.Controls.Add(this.lblEstado);
             this.gpbVoluntario.Controls.Add(this.cbxEstado);
@@ -86,13 +90,13 @@
             this.gpbVoluntario.Controls.Add(this.lblNumero);
             this.gpbVoluntario.Controls.Add(this.txtNumero);
             this.gpbVoluntario.Controls.Add(this.lblEndereco);
-            this.gpbVoluntario.Controls.Add(this.textBox2);
-            this.gpbVoluntario.Controls.Add(this.mkdCEP);
-            this.gpbVoluntario.Controls.Add(this.maskedTextBox2);
-            this.gpbVoluntario.Controls.Add(this.mkdTelefone);
-            this.gpbVoluntario.Controls.Add(this.maskedTextBox1);
-            this.gpbVoluntario.Controls.Add(this.lblEmail);
             this.gpbVoluntario.Controls.Add(this.txtEndereco);
+            this.gpbVoluntario.Controls.Add(this.lblCep);
+            this.gpbVoluntario.Controls.Add(this.mkdCEP);
+            this.gpbVoluntario.Controls.Add(this.lblTelefone);
+            this.gpbVoluntario.Controls.Add(this.mkdTelefone);
+            this.gpbVoluntario.Controls.Add(this.lblEmail);
+            this.gpbVoluntario.Controls.Add(this.txtEmail);
             this.gpbVoluntario.Controls.Add(this.lblNome);
             this.gpbVoluntario.Controls.Add(this.txtNome);
             this.gpbVoluntario.Controls.Add(this.lblCodigo);
@@ -163,7 +167,7 @@
             this.cbxEstado.Location = new System.Drawing.Point(483, 302);
             this.cbxEstado.Name = "cbxEstado";
             this.cbxEstado.Size = new System.Drawing.Size(138, 28);
-            this.cbxEstado.TabIndex = 18;
+            this.cbxEstado.TabIndex = 11;
             // 
             // lblCidade
             // 
@@ -179,7 +183,7 @@
             this.txtCidade.Location = new System.Drawing.Point(259, 304);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(182, 26);
-            this.txtCidade.TabIndex = 16;
+            this.txtCidade.TabIndex = 10;
             // 
             // lblBairro
             // 
@@ -195,7 +199,7 @@
             this.txtBairro.Location = new System.Drawing.Point(28, 304);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(182, 26);
-            this.txtBairro.TabIndex = 14;
+            this.txtBairro.TabIndex = 9;
             // 
             // lblNumero
             // 
@@ -211,7 +215,7 @@
             this.txtNumero.Location = new System.Drawing.Point(483, 232);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(138, 26);
-            this.txtNumero.TabIndex = 12;
+            this.txtNumero.TabIndex = 7;
             // 
             // lblEndereco
             // 
@@ -222,46 +226,47 @@
             this.lblEndereco.TabIndex = 11;
             this.lblEndereco.Text = "Endereço";
             // 
-            // textBox2
+            // txtEndereco
             // 
-            this.textBox2.Location = new System.Drawing.Point(27, 232);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(433, 26);
-            this.textBox2.TabIndex = 10;
+            this.txtEndereco.Location = new System.Drawing.Point(27, 232);
+            this.txtEndereco.Name = "txtEndereco";
+            this.txtEndereco.Size = new System.Drawing.Size(433, 26);
+            this.txtEndereco.TabIndex = 6;
+            // 
+            // lblCep
+            // 
+            this.lblCep.AutoSize = true;
+            this.lblCep.Location = new System.Drawing.Point(648, 120);
+            this.lblCep.Name = "lblCep";
+            this.lblCep.Size = new System.Drawing.Size(41, 20);
+            this.lblCep.TabIndex = 9;
+            this.lblCep.Text = "CEP";
             // 
             // mkdCEP
             // 
-            this.mkdCEP.AutoSize = true;
-            this.mkdCEP.Location = new System.Drawing.Point(648, 120);
+            this.mkdCEP.Location = new System.Drawing.Point(652, 155);
+            this.mkdCEP.Mask = "00000-000";
             this.mkdCEP.Name = "mkdCEP";
-            this.mkdCEP.Size = new System.Drawing.Size(41, 20);
-            this.mkdCEP.TabIndex = 9;
-            this.mkdCEP.Text = "CEP";
+            this.mkdCEP.Size = new System.Drawing.Size(88, 26);
+            this.mkdCEP.TabIndex = 5;
+            this.mkdCEP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mkdCEP_KeyDown);
             // 
-            // maskedTextBox2
+            // lblTelefone
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(652, 155);
-            this.maskedTextBox2.Mask = "00000-000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(88, 26);
-            this.maskedTextBox2.TabIndex = 8;
+            this.lblTelefone.AutoSize = true;
+            this.lblTelefone.Location = new System.Drawing.Point(479, 120);
+            this.lblTelefone.Name = "lblTelefone";
+            this.lblTelefone.Size = new System.Drawing.Size(71, 20);
+            this.lblTelefone.TabIndex = 7;
+            this.lblTelefone.Text = "Telefone";
             // 
             // mkdTelefone
             // 
-            this.mkdTelefone.AutoSize = true;
-            this.mkdTelefone.Location = new System.Drawing.Point(479, 120);
+            this.mkdTelefone.Location = new System.Drawing.Point(483, 155);
+            this.mkdTelefone.Mask = "(00) 00000-0000";
             this.mkdTelefone.Name = "mkdTelefone";
-            this.mkdTelefone.Size = new System.Drawing.Size(71, 20);
-            this.mkdTelefone.TabIndex = 7;
-            this.mkdTelefone.Text = "Telefone";
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(483, 155);
-            this.maskedTextBox1.Mask = "(00) 00000-0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(138, 26);
-            this.maskedTextBox1.TabIndex = 6;
+            this.mkdTelefone.Size = new System.Drawing.Size(138, 26);
+            this.mkdTelefone.TabIndex = 4;
             // 
             // lblEmail
             // 
@@ -272,12 +277,12 @@
             this.lblEmail.TabIndex = 5;
             this.lblEmail.Text = "Email";
             // 
-            // txtEndereco
+            // txtEmail
             // 
-            this.txtEndereco.Location = new System.Drawing.Point(258, 155);
-            this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(202, 26);
-            this.txtEndereco.TabIndex = 4;
+            this.txtEmail.Location = new System.Drawing.Point(258, 155);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(202, 26);
+            this.txtEmail.TabIndex = 3;
             // 
             // lblNome
             // 
@@ -309,7 +314,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(26, 73);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(150, 26);
-            this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.TabIndex = 1;
             // 
             // gpxDirigente
             // 
@@ -325,7 +330,7 @@
             this.gpxDirigente.Location = new System.Drawing.Point(12, 431);
             this.gpxDirigente.Name = "gpxDirigente";
             this.gpxDirigente.Size = new System.Drawing.Size(960, 143);
-            this.gpxDirigente.TabIndex = 1;
+            this.gpxDirigente.TabIndex = 12;
             this.gpxDirigente.TabStop = false;
             this.gpxDirigente.Text = "Informações do dirigente ";
             // 
@@ -335,7 +340,7 @@
             this.cbxAtribuicao.Location = new System.Drawing.Point(6, 75);
             this.cbxAtribuicao.Name = "cbxAtribuicao";
             this.cbxAtribuicao.Size = new System.Drawing.Size(193, 28);
-            this.cbxAtribuicao.TabIndex = 22;
+            this.cbxAtribuicao.TabIndex = 13;
             this.cbxAtribuicao.SelectedIndexChanged += new System.EventHandler(this.cbxAtribuicao_SelectedIndexChanged);
             // 
             // cbStatus
@@ -344,7 +349,7 @@
             this.cbStatus.Location = new System.Drawing.Point(824, 77);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(67, 24);
-            this.cbStatus.TabIndex = 27;
+            this.cbStatus.TabIndex = 16;
             this.cbStatus.Text = "Ativo ";
             this.cbStatus.UseVisualStyleBackColor = true;
             // 
@@ -381,7 +386,7 @@
             this.dtpHora.Location = new System.Drawing.Point(411, 73);
             this.dtpHora.Name = "dtpHora";
             this.dtpHora.Size = new System.Drawing.Size(111, 26);
-            this.dtpHora.TabIndex = 23;
+            this.dtpHora.TabIndex = 15;
             // 
             // dtpData
             // 
@@ -389,7 +394,7 @@
             this.dtpData.Location = new System.Drawing.Point(258, 73);
             this.dtpData.Name = "dtpData";
             this.dtpData.Size = new System.Drawing.Size(121, 26);
-            this.dtpData.TabIndex = 22;
+            this.dtpData.TabIndex = 14;
             // 
             // lblAtribuicao
             // 
@@ -422,7 +427,7 @@
             this.btnVoltar.Location = new System.Drawing.Point(824, 11);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(121, 42);
-            this.btnVoltar.TabIndex = 12;
+            this.btnVoltar.TabIndex = 23;
             this.btnVoltar.Text = "&Voltar";
             this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -436,7 +441,7 @@
             this.btnLimpar.Location = new System.Drawing.Point(687, 11);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(121, 42);
-            this.btnLimpar.TabIndex = 11;
+            this.btnLimpar.TabIndex = 22;
             this.btnLimpar.Text = "&Limpar";
             this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -449,11 +454,12 @@
             this.btnPesquisar.Location = new System.Drawing.Point(549, 11);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(121, 42);
-            this.btnPesquisar.TabIndex = 10;
+            this.btnPesquisar.TabIndex = 21;
             this.btnPesquisar.Text = "&Pesquisar";
             this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnExcluir
             // 
@@ -462,7 +468,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(411, 11);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(121, 42);
-            this.btnExcluir.TabIndex = 9;
+            this.btnExcluir.TabIndex = 20;
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -475,7 +481,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(279, 11);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(121, 42);
-            this.btnAlterar.TabIndex = 8;
+            this.btnAlterar.TabIndex = 19;
             this.btnAlterar.Text = "&Alterar";
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -488,11 +494,12 @@
             this.btnCadastrar.Location = new System.Drawing.Point(144, 11);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(121, 42);
-            this.btnCadastrar.TabIndex = 7;
+            this.btnCadastrar.TabIndex = 18;
             this.btnCadastrar.Text = "&Cadastrar";
             this.btnCadastrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCadastrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // btnNovo
             // 
@@ -501,11 +508,28 @@
             this.btnNovo.Location = new System.Drawing.Point(3, 11);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(121, 42);
-            this.btnNovo.TabIndex = 6;
+            this.btnNovo.TabIndex = 17;
             this.btnNovo.Text = "&Novo";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // txtComplemento
+            // 
+            this.txtComplemento.Location = new System.Drawing.Point(638, 232);
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(138, 26);
+            this.txtComplemento.TabIndex = 8;
+            // 
+            // lblComplemento
+            // 
+            this.lblComplemento.AutoSize = true;
+            this.lblComplemento.Location = new System.Drawing.Point(634, 197);
+            this.lblComplemento.Name = "lblComplemento";
+            this.lblComplemento.Size = new System.Drawing.Size(108, 20);
+            this.lblComplemento.TabIndex = 23;
+            this.lblComplemento.Text = "Complemento";
             // 
             // frmGerenciaVoluntario
             // 
@@ -537,13 +561,13 @@
         private System.Windows.Forms.Label lblNumero;
         private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label lblEndereco;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label mkdCEP;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.Label mkdTelefone;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtEndereco;
+        private System.Windows.Forms.Label lblCep;
+        private System.Windows.Forms.MaskedTextBox mkdCEP;
+        private System.Windows.Forms.Label lblTelefone;
+        private System.Windows.Forms.MaskedTextBox mkdTelefone;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblEstado;
@@ -570,5 +594,7 @@
         private System.Windows.Forms.CheckBox cbStatus;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ComboBox cbxAtribuicao;
+        private System.Windows.Forms.Label lblComplemento;
+        private System.Windows.Forms.TextBox txtComplemento;
     }
 }
