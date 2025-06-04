@@ -65,6 +65,7 @@
             this.rdbNome.TabIndex = 2;
             this.rdbNome.Text = "Nome";
             this.rdbNome.UseVisualStyleBackColor = true;
+            this.rdbNome.CheckedChanged += new System.EventHandler(this.rdbNome_CheckedChanged);
             // 
             // rdbCodigo
             // 
@@ -75,9 +76,11 @@
             this.rdbCodigo.TabIndex = 1;
             this.rdbCodigo.Text = "Codigo";
             this.rdbCodigo.UseVisualStyleBackColor = true;
+            this.rdbCodigo.CheckedChanged += new System.EventHandler(this.rdbCodigo_CheckedChanged);
             // 
             // txtDescricao
             // 
+            this.txtDescricao.Enabled = false;
             this.txtDescricao.Location = new System.Drawing.Point(104, 109);
             this.txtDescricao.MaxLength = 50;
             this.txtDescricao.Multiline = true;
@@ -96,6 +99,7 @@
             // 
             // lboPesquisar
             // 
+            this.lboPesquisar.Enabled = false;
             this.lboPesquisar.FormattingEnabled = true;
             this.lboPesquisar.ItemHeight = 20;
             this.lboPesquisar.Location = new System.Drawing.Point(6, 164);
@@ -106,15 +110,18 @@
             // 
             // btnLimpar
             // 
+            this.btnLimpar.Enabled = false;
             this.btnLimpar.Location = new System.Drawing.Point(746, 180);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(179, 131);
             this.btnLimpar.TabIndex = 6;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnPesquisar
             // 
+            this.btnPesquisar.Enabled = false;
             this.btnPesquisar.Location = new System.Drawing.Point(746, 19);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(179, 131);
