@@ -100,7 +100,7 @@ namespace GPSFrancisco
         }
         public int cadastrarVoluntario(string nome, string email, string telCel,string endereco,
             string cep,string numero, string bairro, string cidade, string estado, 
-            DateTime data, DateTime hora, int status) 
+            int codAtr, string data, string hora, int status) 
         {
             MySqlCommand comm = new MySqlCommand();
             comm.CommandText = "insert into tbVoluntario(nome,email,telCel,endereco,numero,cep,bairro,cidade,estado,codAtr,data_,hora,status_) values (@nome,@email,@telCel,@endereco,@numero,@cep,@bairro,@cidade,@estado,@codAtr,@data_,@hora,@status_);";
@@ -117,9 +117,9 @@ namespace GPSFrancisco
             comm.Parameters.Add("@cidade", MySqlDbType.VarChar, 100).Value = cidade;
             comm.Parameters.Add("@estado", MySqlDbType.VarChar, 2).Value = estado;
             comm.Parameters.Add("@codAtr", MySqlDbType.Int32).Value = codigoAtribuicao;
-            comm.Parameters.Add("@data_", MySqlDbType.Date).Value = data;
-            comm.Parameters.Add("@hora", MySqlDbType.Time).Value = hora;
-            comm.Parameters.Add("@status_", MySqlDbType.Bit).Value = status;
+            comm.Parameters.Add("@data_", MySqlDbType.Date, 100).Value = data;
+            comm.Parameters.Add("@hora", MySqlDbType.Time, 100).Value = hora;
+            comm.Parameters.Add("@status_", MySqlDbType.Int32).Value = status;
 
             comm.Connection = conexao.ObterConexao();
 
@@ -256,7 +256,7 @@ namespace GPSFrancisco
             else
             {
                 if (cadastrarVoluntario(txtNome.Text, txtEmail.Text, mkdTelefone.Text, mkdCEP.Text, mkdCEP.Text, txtNumero.Text, txtBairro.Text, txtCidade.Text,
-                    cbxEstado.Text, dtpData.Value, dtpHora.Value, cbStatus.Checked ? 1 : 0
+                    cbxEstado.Text, codigoAtribuicao,dtpData.Text, dtpHora.Text, cbStatus.Checked ? 1 : 0
                     ) == 1) {
                 MessageBox.Show("Cadastrado com sucesso.",
                     "Messagem do sistema",
