@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGerenciaVoluntario));
             this.gpbVoluntario = new System.Windows.Forms.GroupBox();
+            this.lblComplemento = new System.Windows.Forms.Label();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
             this.pcbFotoVoluntario = new System.Windows.Forms.PictureBox();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
@@ -68,8 +70,8 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.txtComplemento = new System.Windows.Forms.TextBox();
-            this.lblComplemento = new System.Windows.Forms.Label();
+            this.btnCarregarFoto = new System.Windows.Forms.Button();
+            this.ofdCarregar = new System.Windows.Forms.OpenFileDialog();
             this.gpbVoluntario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFotoVoluntario)).BeginInit();
             this.gpxDirigente.SuspendLayout();
@@ -78,6 +80,7 @@
             // 
             // gpbVoluntario
             // 
+            this.gpbVoluntario.Controls.Add(this.btnCarregarFoto);
             this.gpbVoluntario.Controls.Add(this.lblComplemento);
             this.gpbVoluntario.Controls.Add(this.txtComplemento);
             this.gpbVoluntario.Controls.Add(this.pcbFotoVoluntario);
@@ -108,6 +111,22 @@
             this.gpbVoluntario.TabIndex = 0;
             this.gpbVoluntario.TabStop = false;
             this.gpbVoluntario.Text = "Informações do voluntario ";
+            // 
+            // lblComplemento
+            // 
+            this.lblComplemento.AutoSize = true;
+            this.lblComplemento.Location = new System.Drawing.Point(634, 197);
+            this.lblComplemento.Name = "lblComplemento";
+            this.lblComplemento.Size = new System.Drawing.Size(108, 20);
+            this.lblComplemento.TabIndex = 23;
+            this.lblComplemento.Text = "Complemento";
+            // 
+            // txtComplemento
+            // 
+            this.txtComplemento.Location = new System.Drawing.Point(638, 232);
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(138, 26);
+            this.txtComplemento.TabIndex = 8;
             // 
             // pcbFotoVoluntario
             // 
@@ -515,21 +534,19 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // txtComplemento
+            // btnCarregarFoto
             // 
-            this.txtComplemento.Location = new System.Drawing.Point(638, 232);
-            this.txtComplemento.Name = "txtComplemento";
-            this.txtComplemento.Size = new System.Drawing.Size(138, 26);
-            this.txtComplemento.TabIndex = 8;
+            this.btnCarregarFoto.Location = new System.Drawing.Point(791, 155);
+            this.btnCarregarFoto.Name = "btnCarregarFoto";
+            this.btnCarregarFoto.Size = new System.Drawing.Size(122, 26);
+            this.btnCarregarFoto.TabIndex = 24;
+            this.btnCarregarFoto.Text = "Carregar";
+            this.btnCarregarFoto.UseVisualStyleBackColor = true;
+            this.btnCarregarFoto.Click += new System.EventHandler(this.btnCarregarFoto_Click);
             // 
-            // lblComplemento
+            // ofdCarregar
             // 
-            this.lblComplemento.AutoSize = true;
-            this.lblComplemento.Location = new System.Drawing.Point(634, 197);
-            this.lblComplemento.Name = "lblComplemento";
-            this.lblComplemento.Size = new System.Drawing.Size(108, 20);
-            this.lblComplemento.TabIndex = 23;
-            this.lblComplemento.Text = "Complemento";
+            this.ofdCarregar.FileName = "openFileDialog1";
             // 
             // frmGerenciaVoluntario
             // 
@@ -596,5 +613,7 @@
         private System.Windows.Forms.ComboBox cbxAtribuicao;
         private System.Windows.Forms.Label lblComplemento;
         private System.Windows.Forms.TextBox txtComplemento;
+        private System.Windows.Forms.Button btnCarregarFoto;
+        private System.Windows.Forms.OpenFileDialog ofdCarregar;
     }
 }

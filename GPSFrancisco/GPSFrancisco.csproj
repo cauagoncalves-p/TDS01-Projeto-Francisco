@@ -111,6 +111,12 @@
     <Compile Include="frmAtribuicao.Designer.cs">
       <DependentUpon>frmAtribuicao.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCalendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCalendario.Designer.cs">
+      <DependentUpon>frmCalendario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGerenciarUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAtribuicao.resx">
       <DependentUpon>frmAtribuicao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCalendario.resx">
+      <DependentUpon>frmCalendario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGerenciarUsuarios.resx">
       <DependentUpon>frmGerenciarUsuarios.cs</DependentUpon>

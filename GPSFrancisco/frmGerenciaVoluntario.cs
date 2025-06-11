@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MosaicoSolutions.ViaCep;
 using System.Reflection.Emit;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GPSFrancisco
 {
@@ -27,7 +28,8 @@ namespace GPSFrancisco
             InitializeComponent();
             carregaAtribuicoes();
             desabilitarCamposNovo();
-            txtNome.Text = nome;    
+            txtNome.Text = nome;
+            carregaVoluntariosPorNome(txtNome.Text);
         }
 
         public void limparCampos(){
@@ -98,6 +100,33 @@ namespace GPSFrancisco
             btnLimpar.Enabled = false;
             txtNome.Focus();
         }
+
+        //habilitar campos ALTERAR
+        public void habilitarCamposAlterar()
+        {
+            txtCodigo.Enabled = false;
+            txtNome.Enabled = true;
+            txtEmail.Enabled = true;
+            txtEndereco.Enabled = true;
+            txtBairro.Enabled = true;
+            txtCidade.Enabled = true;
+            txtNumero.Enabled = true;
+            mkdCEP.Enabled = true;
+            txtComplemento.Enabled = true;
+            mkdTelefone.Enabled = true;
+            cbxAtribuicao.Enabled = true;
+            cbxEstado.Enabled = true;
+            dtpData.Enabled = true;
+            dtpHora.Enabled = true;
+            cbStatus.Enabled = false;
+            btnCadastrar.Enabled = false;
+            btnAlterar.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnLimpar.Enabled = true;
+            btnNovo.Enabled = true; 
+            txtNome.Focus();
+        }
+
         public int cadastrarVoluntario(string nome, string email, string telCel,string endereco,
             string cep,string numero, string bairro, string cidade, string estado, 
             int codAtr, string data, string hora, int status) 
@@ -154,7 +183,7 @@ namespace GPSFrancisco
         public int buscaCodigoAtribuicoes(string nome)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "select codAtr from tbatribuicoes where nome = @nome;";
+            comm.CommandText = "select codAtr from tbatribuicao where nome = @nome;";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
@@ -170,6 +199,8 @@ namespace GPSFrancisco
             return codAtr;
         }
 
+       
+    
         private int buscarCodigoAtribuicoes(string nome)
         {
             MySqlCommand comm = new MySqlCommand();
@@ -207,7 +238,7 @@ namespace GPSFrancisco
 
                 txtEndereco.Text = endereco.Logradouro.ToString();
                 txtCidade.Text = endereco.Localidade.ToString();
-                txtBairro.Text = endereco.ToString();
+                txtBairro.Text = endereco.Bairro.ToString();
                 cbxEstado.Text = endereco.UF.ToString();
             }
             catch (Exception) {
@@ -217,6 +248,56 @@ namespace GPSFrancisco
             }
            
         }
+
+        private void carregaVoluntariosPorNome(string nome)
+        {
+            bool status = false;
+
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbvoluntario where nome = @nome;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = nome;
+
+            comm.Connection = conexao.ObterConexao();
+
+            MySqlDataReader DR;
+
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+
+            if (DR.GetInt32(13) == 1)
+            {
+                status = true;
+            }
+
+            if (DR.GetInt32(13) == 0)
+            {
+                status = false;
+            }
+
+            txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
+            txtNome.Text = DR.GetString(1);
+            txtEmail.Text = DR.GetString(2);
+            mkdTelefone.Text = DR.GetString(3);
+            txtEndereco.Text = DR.GetString(4);
+            txtNumero.Text = DR.GetString(5);
+            mkdCEP.Text = DR.GetString(6);
+            txtBairro.Text = DR.GetString(7);
+            txtCidade.Text = DR.GetString(8);
+            cbxEstado.Text = DR.GetString(9);
+            codigoAtribuicao = DR.GetInt32(10);
+            dtpData.Value = DR.GetDateTime(11);
+            dtpHora.Value = DR.GetDateTime(12);
+            cbStatus.Checked = status;
+
+            habilitarCamposAlterar();
+
+            conexao.FecharConexao();
+        }
+
         private void mkdCEP_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) {
@@ -290,6 +371,16 @@ namespace GPSFrancisco
             frmPesquisarVoluntarios frmPesquisarVoluntarios = new frmPesquisarVoluntarios();
             frmPesquisarVoluntarios.ShowDialog();
             this.Show();
+        }
+
+        private void btnCarregarFoto_Click(object sender, EventArgs e)
+        {
+            //pcbFotoVoluntario.Image = Image.FromFile(@"C:\Users\Caua.gpereira2\OneDrive\Aulas React\exercicio-card-jogador\src\assets\yuriAlberto.png");
+            //pcbFotoVoluntario.ImageLocation = @"C:\Users\Caua.gpereira2\OneDrive\Aulas React\exercicio-card-jogador\src\assets\yuriAlberto.png";
+            ofdCarregar.ShowDialog();
+            string path = ofdCarregar.FileName;
+            pcbFotoVoluntario.Image = Image.FromFile(path);
+
         }
     }
 }

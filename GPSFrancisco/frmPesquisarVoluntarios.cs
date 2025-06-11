@@ -22,7 +22,7 @@ namespace GPSFrancisco
         {
             btnLimpar.Enabled = true;
             btnPesquisar.Enabled = true;
-            gpxPesquisar.Enabled = true;
+            lboPesquisar.Enabled= true;
             txtDescricao.Enabled = true;
             txtDescricao.Focus();
         }
@@ -38,6 +38,7 @@ namespace GPSFrancisco
         private void lboPesquisar_SelectedIndexChanged(object sender, EventArgs e)
         {
             string nome = lboPesquisar.SelectedItem.ToString();
+            
             
             this.Hide();
             frmGerenciaVoluntario frmGerenciaVoluntario = new frmGerenciaVoluntario(nome);
@@ -93,7 +94,8 @@ namespace GPSFrancisco
         public void buscarVoluntarioPorNome(string nome)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = $"select * from tbVoluntario where nome like = @'%{nome}%'";
+            comm.CommandText = $"select * from tbvoluntario where nome like '%{nome}%';";
+            // like = @'%nome%'
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
