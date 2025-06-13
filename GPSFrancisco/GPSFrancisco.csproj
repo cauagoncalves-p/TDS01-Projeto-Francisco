@@ -117,6 +117,12 @@
     <Compile Include="frmCalendario.Designer.cs">
       <DependentUpon>frmCalendario.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCarregarFoto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCarregarFoto.Designer.cs">
+      <DependentUpon>frmCarregarFoto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGerenciarUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,12 @@
     <Compile Include="frmPesquisarVoluntarios.Designer.cs">
       <DependentUpon>frmPesquisarVoluntarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRecurparFotos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRecurparFotos.Designer.cs">
+      <DependentUpon>frmRecurparFotos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCalendario.resx">
       <DependentUpon>frmCalendario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCarregarFoto.resx">
+      <DependentUpon>frmCarregarFoto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGerenciarUsuarios.resx">
       <DependentUpon>frmGerenciarUsuarios.cs</DependentUpon>
@@ -184,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPesquisarVoluntarios.resx">
       <DependentUpon>frmPesquisarVoluntarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecurparFotos.resx">
+      <DependentUpon>frmRecurparFotos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
