@@ -123,6 +123,12 @@
     <Compile Include="frmCarregarFoto.Designer.cs">
       <DependentUpon>frmCarregarFoto.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDataGridView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDataGridView.Designer.cs">
+      <DependentUpon>frmDataGridView.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGerenciarUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCarregarFoto.resx">
       <DependentUpon>frmCarregarFoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDataGridView.resx">
+      <DependentUpon>frmDataGridView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGerenciarUsuarios.resx">
       <DependentUpon>frmGerenciarUsuarios.cs</DependentUpon>

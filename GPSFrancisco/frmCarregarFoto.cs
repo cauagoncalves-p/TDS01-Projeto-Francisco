@@ -64,5 +64,14 @@ namespace GPSFrancisco
                 MessageBox.Show("Favor inserir um texto ou uma imagem");
             }
         }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmRecurparFotos frmRecurparFotos = new frmRecurparFotos();
+            frmRecurparFotos.ShowDialog();
+            this.Show();
+
+        }
     }
 }
