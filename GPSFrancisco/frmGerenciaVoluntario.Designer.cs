@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGerenciaVoluntario));
             this.gpbVoluntario = new System.Windows.Forms.GroupBox();
+            this.btnInserirFoto = new System.Windows.Forms.Button();
             this.lblComplemento = new System.Windows.Forms.Label();
             this.txtComplemento = new System.Windows.Forms.TextBox();
             this.pcbFotoVoluntario = new System.Windows.Forms.PictureBox();
@@ -70,8 +71,8 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.btnCarregarFoto = new System.Windows.Forms.Button();
             this.ofdCarregar = new System.Windows.Forms.OpenFileDialog();
+            this.lblCaminhoFoto = new System.Windows.Forms.Label();
             this.gpbVoluntario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFotoVoluntario)).BeginInit();
             this.gpxDirigente.SuspendLayout();
@@ -80,7 +81,8 @@
             // 
             // gpbVoluntario
             // 
-            this.gpbVoluntario.Controls.Add(this.btnCarregarFoto);
+            this.gpbVoluntario.Controls.Add(this.lblCaminhoFoto);
+            this.gpbVoluntario.Controls.Add(this.btnInserirFoto);
             this.gpbVoluntario.Controls.Add(this.lblComplemento);
             this.gpbVoluntario.Controls.Add(this.txtComplemento);
             this.gpbVoluntario.Controls.Add(this.pcbFotoVoluntario);
@@ -111,6 +113,16 @@
             this.gpbVoluntario.TabIndex = 0;
             this.gpbVoluntario.TabStop = false;
             this.gpbVoluntario.Text = "Informações do voluntario ";
+            // 
+            // btnInserirFoto
+            // 
+            this.btnInserirFoto.Location = new System.Drawing.Point(791, 155);
+            this.btnInserirFoto.Name = "btnInserirFoto";
+            this.btnInserirFoto.Size = new System.Drawing.Size(122, 26);
+            this.btnInserirFoto.TabIndex = 24;
+            this.btnInserirFoto.Text = "Inserir";
+            this.btnInserirFoto.UseVisualStyleBackColor = true;
+            this.btnInserirFoto.Click += new System.EventHandler(this.btnCarregarFoto_Click);
             // 
             // lblComplemento
             // 
@@ -534,19 +546,18 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // btnCarregarFoto
-            // 
-            this.btnCarregarFoto.Location = new System.Drawing.Point(791, 155);
-            this.btnCarregarFoto.Name = "btnCarregarFoto";
-            this.btnCarregarFoto.Size = new System.Drawing.Size(122, 26);
-            this.btnCarregarFoto.TabIndex = 24;
-            this.btnCarregarFoto.Text = "Carregar";
-            this.btnCarregarFoto.UseVisualStyleBackColor = true;
-            this.btnCarregarFoto.Click += new System.EventHandler(this.btnCarregarFoto_Click);
-            // 
             // ofdCarregar
             // 
             this.ofdCarregar.FileName = "openFileDialog1";
+            // 
+            // lblCaminhoFoto
+            // 
+            this.lblCaminhoFoto.AutoSize = true;
+            this.lblCaminhoFoto.Location = new System.Drawing.Point(596, 38);
+            this.lblCaminhoFoto.Name = "lblCaminhoFoto";
+            this.lblCaminhoFoto.Size = new System.Drawing.Size(0, 20);
+            this.lblCaminhoFoto.TabIndex = 25;
+            this.lblCaminhoFoto.Visible = false;
             // 
             // frmGerenciaVoluntario
             // 
@@ -613,7 +624,8 @@
         private System.Windows.Forms.ComboBox cbxAtribuicao;
         private System.Windows.Forms.Label lblComplemento;
         private System.Windows.Forms.TextBox txtComplemento;
-        private System.Windows.Forms.Button btnCarregarFoto;
+        private System.Windows.Forms.Button btnInserirFoto;
         private System.Windows.Forms.OpenFileDialog ofdCarregar;
+        private System.Windows.Forms.Label lblCaminhoFoto;
     }
 }
