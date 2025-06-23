@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGerenciaVoluntario));
             this.gpbVoluntario = new System.Windows.Forms.GroupBox();
+            this.lblCaminhoFoto = new System.Windows.Forms.Label();
             this.btnInserirFoto = new System.Windows.Forms.Button();
             this.lblComplemento = new System.Windows.Forms.Label();
             this.txtComplemento = new System.Windows.Forms.TextBox();
@@ -72,7 +73,6 @@
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.ofdCarregar = new System.Windows.Forms.OpenFileDialog();
-            this.lblCaminhoFoto = new System.Windows.Forms.Label();
             this.gpbVoluntario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFotoVoluntario)).BeginInit();
             this.gpxDirigente.SuspendLayout();
@@ -113,6 +113,15 @@
             this.gpbVoluntario.TabIndex = 0;
             this.gpbVoluntario.TabStop = false;
             this.gpbVoluntario.Text = "Informações do voluntario ";
+            // 
+            // lblCaminhoFoto
+            // 
+            this.lblCaminhoFoto.AutoSize = true;
+            this.lblCaminhoFoto.Location = new System.Drawing.Point(596, 38);
+            this.lblCaminhoFoto.Name = "lblCaminhoFoto";
+            this.lblCaminhoFoto.Size = new System.Drawing.Size(0, 20);
+            this.lblCaminhoFoto.TabIndex = 25;
+            this.lblCaminhoFoto.Visible = false;
             // 
             // btnInserirFoto
             // 
@@ -549,15 +558,6 @@
             // ofdCarregar
             // 
             this.ofdCarregar.FileName = "openFileDialog1";
-            // 
-            // lblCaminhoFoto
-            // 
-            this.lblCaminhoFoto.AutoSize = true;
-            this.lblCaminhoFoto.Location = new System.Drawing.Point(596, 38);
-            this.lblCaminhoFoto.Name = "lblCaminhoFoto";
-            this.lblCaminhoFoto.Size = new System.Drawing.Size(0, 20);
-            this.lblCaminhoFoto.TabIndex = 25;
-            this.lblCaminhoFoto.Visible = false;
             // 
             // frmGerenciaVoluntario
             // 

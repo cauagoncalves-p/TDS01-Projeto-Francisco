@@ -156,8 +156,8 @@ namespace GPSFrancisco
             comm.Parameters.Add("@cidade", MySqlDbType.VarChar, 100).Value = cidade;
             comm.Parameters.Add("@estado", MySqlDbType.VarChar, 2).Value = estado;
             comm.Parameters.Add("@codAtr", MySqlDbType.Int32).Value = codigoAtribuicao;
-            comm.Parameters.Add("@data_", MySqlDbType.Date).Value = data.Date;
-            comm.Parameters.Add("@hora", MySqlDbType.Time).Value = hora;
+            comm.Parameters.Add("@data_", MySqlDbType.Datetime).Value = data;
+            comm.Parameters.Add("@hora", MySqlDbType.Datetime).Value = hora;
             comm.Parameters.Add("@status_", MySqlDbType.Int32).Value = status;
             comm.Parameters.Add("@foto", MySqlDbType.LongBlob).Value = foto;
 
@@ -215,7 +215,7 @@ namespace GPSFrancisco
         private int buscarCodigoAtribuicoes(string nome)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "select codAtr from tbAtribuicao where nome = @nome;";
+            comm.CommandText = "select codAtr from tbatribuicao where nome = @nome;";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
@@ -267,7 +267,7 @@ namespace GPSFrancisco
             bool status = false;
 
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "select * from tbvoluntario where nome = @nome;";
+            comm.CommandText = "select * from tbvoluntario vol INNER join tbatribuicao atr on vol.codAtr = atr.codAtr where vol.nome = @nome;"; ;
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
@@ -281,12 +281,12 @@ namespace GPSFrancisco
             DR.Read();
 
 
-            if (DR.GetInt32(13) == 1)
+            if (DR.GetInt32(14) == 1)
             {
                 status = true;
             }
 
-            if (DR.GetInt32(13) == 0)
+            if (DR.GetInt32(14) == 0)
             {
                 status = false;
             }
@@ -298,13 +298,15 @@ namespace GPSFrancisco
             txtEndereco.Text = DR.GetString(4);
             txtNumero.Text = DR.GetString(5);
             mkdCEP.Text = DR.GetString(6);
-            txtBairro.Text = DR.GetString(7);
-            txtCidade.Text = DR.GetString(8);
-            cbxEstado.Text = DR.GetString(9);
-            codigoAtribuicao = DR.GetInt32(10);
-            dtpData.Value = DR.GetDateTime(11);
-            dtpHora.Value = DR.GetDateTime(12);
+            txtComplemento.Text = DR.GetString(7);
+            txtBairro.Text = DR.GetString(8);
+            txtCidade.Text = DR.GetString(9);
+            cbxEstado.Text = DR.GetString(10);
+            codigoAtribuicao = DR.GetInt32(11);
+            dtpData.Value = DR.GetDateTime(12);
+            dtpHora.Value = DR.GetDateTime(13);
             cbStatus.Checked = status;
+            cbxAtribuicao.Text = DR.GetString(17);
 
             habilitarCamposAlterar();
 
@@ -363,12 +365,10 @@ namespace GPSFrancisco
 
                 DateTime data = dtpData.Value;
                 string dataFormatada = data.ToString("yyyy-MM-dd");
-
-                DateTime hora = dtpHora.Value;
-                string horaFormatada = hora.ToString(@"hh\:mm\:ss");
+   
 
                 if (cadastrarVoluntario(txtNome.Text, txtEmail.Text, mkdTelefone.Text, mkdCEP.Text, mkdCEP.Text, txtNumero.Text, txtBairro.Text, txtCidade.Text,
-                    cbxEstado.Text, codigoAtribuicao, Convert.ToDateTime(dataFormatada), Convert.ToDateTime(horaFormatada) , cbStatus.Checked ? 1 : 0, imagem_byte
+                    cbxEstado.Text, codigoAtribuicao, Convert.ToDateTime(dataFormatada), dtpHora.Value, cbStatus.Checked ? 1 : 0, imagem_byte
                     ) == 1)
                 {
                     MessageBox.Show("Cadastrado com sucesso.",
