@@ -464,10 +464,79 @@ namespace GPSFrancisco
             }
         }
 
-        public void enviafoto()
-        {
+        public int excluirVoluntarios(int codVol) { 
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "delete from tbVoluntario where codVol = @codVol;";
+            comm.CommandType = CommandType.Text;
 
-            
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@codVol", MySqlDbType.Int32).Value = codVol;
+
+            comm.Connection = conexao.ObterConexao();
+
+            int resp = comm.ExecuteNonQuery();
+            return resp;
+        }
+
+        public int alterarVolunrarios(string nome) {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "update table from tbVoluntario where nome = @nome;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar,100).Value = nome;
+            comm.Connection = conexao.ObterConexao();
+
+            int resp = comm.ExecuteNonQuery();
+
+            return resp;
+        }
+
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            int resp = alterarVolunrarios(txtNome.Text);
+
+            if (resp == 1)
+            {
+                MessageBox.Show("Alterado com sucesso", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                limparCampos();
+            }
+            else {
+                MessageBox.Show("Alterado com sucesso", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                limparCampos();
+            }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Deseja excluir ?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                int resp = excluirVoluntarios(Convert.ToInt32(txtCodigo.Text));
+
+                if (resp == 1)
+                {
+                    MessageBox.Show("Excluído com sucesso", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao excluir", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                limparCampos();
+                desabilitarCamposNovo();
+                btnNovo.Enabled = true;
+            }
         }
     }
 }
