@@ -13,6 +13,8 @@ using System.Reflection.Emit;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
 using Org.BouncyCastle.Asn1.X509;
+using MosaicoSolutions.ViaCep.Modelos;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace GPSFrancisco
 {
@@ -107,6 +109,7 @@ namespace GPSFrancisco
             btnExcluir.Enabled = false;
             btnAlterar.Enabled = false;
             btnLimpar.Enabled = false;
+            btnInserirFoto.Enabled = false;
             txtNome.Focus();
         }
 
@@ -134,6 +137,7 @@ namespace GPSFrancisco
             pcbFotoVoluntario.Enabled = true;
             btnLimpar.Enabled = true;
             btnNovo.Enabled = true;
+            btnInserirFoto.Enabled = true;
             txtNome.Focus();
         }
 
@@ -264,46 +268,6 @@ namespace GPSFrancisco
         {
 
 
-            //public void carregaImagem()
-            //{
-            //    MySqlCommand comm = new MySqlCommand();
-            //    string sql = "SELECT * FROM tbimagem";
-            //    MySqlDataAdapter DA = new MySqlDataAdapter(sql, conexao.ObterConexao());
-            //    DataTable dt = new DataTable();
-
-            //    if (DA.Fill(dt) < 1)
-            //    {
-            //        MessageBox.Show("Sem registros no banco de dados");
-            //    }
-            //    else
-            //    {
-
-            //        foreach (DataRow dr in dt.Rows)
-            //        {
-            //            dgvFotos.Rows.Add(dr.ItemArray);
-            //        }
-
-            //        DA.Dispose();
-            //    }
-
-            //    conexao.FecharConexao();
-            //}
-
-            //private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-            //{
-            //    string nome = dgvFotos.SelectedRows[0].Cells[0].Value.ToString();
-
-            //    MySqlCommand comm = new MySqlCommand();
-            //    string sql = $"SELECT * FROM tbimagem where codImg like {nome}";
-            //    MySqlDataAdapter DA = new MySqlDataAdapter(sql, conexao.ObterConexao());
-            //    DataTable dt = new DataTable();
-            //    DA.Fill(dt);
-            //    byte[] image = (byte[])dt.Rows[0][2];
-            //    MemoryStream ms = new MemoryStream(image);
-            //    picFotos.Image = Image.FromStream(ms);
-
-            //    conexao.FecharConexao();
-            //}
 
             bool status = false;
 
@@ -372,6 +336,8 @@ namespace GPSFrancisco
             habiitarCamposNovos();
         }
 
+        byte[] imagem_byte = null;
+        string dataFormatada;
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             //verificando se os campos foram preenchidos
@@ -399,8 +365,6 @@ namespace GPSFrancisco
 
             else
             {
-                byte[] imagem_byte = null;
-
                 if (pcbFotoVoluntario.Image != null)
                 {
                     FileStream fs = new FileStream(caminhoFoto, FileMode.Open, FileAccess.Read);
@@ -409,11 +373,8 @@ namespace GPSFrancisco
                     imagem_byte = br.ReadBytes((int)fs.Length);
                 }
 
-                DateTime data = dtpData.Value;
-                string dataFormatada = data.ToString("yyyy-MM-dd");
-   
-
-                if (cadastrarVoluntario(txtNome.Text,txtEmail.Text,mkdTelefone.Text,txtEndereco.Text,mkdCEP.Text,txtComplemento.Text,txtNumero.Text,txtBairro.Text,txtCidade.Text,cbxEstado.Text,codigoAtribuicao, Convert.ToDateTime(dataFormatada)
+ 
+                if (cadastrarVoluntario(txtNome.Text,txtEmail.Text,mkdTelefone.Text,txtEndereco.Text,mkdCEP.Text,txtComplemento.Text,txtNumero.Text,txtBairro.Text,txtCidade.Text,cbxEstado.Text,codigoAtribuicao, dtpData.Value
                     ,dtpHora.Value, cbStatus.Checked ? 1 : 0, imagem_byte
                     ) == 1)
                 {
@@ -450,6 +411,7 @@ namespace GPSFrancisco
             frmPesquisarVoluntarios.ShowDialog();
             this.Show();
         }
+
         string caminhoFoto;
         private void btnCarregarFoto_Click(object sender, EventArgs e)
         {
@@ -466,7 +428,7 @@ namespace GPSFrancisco
 
         public int excluirVoluntarios(int codVol) { 
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "delete from tbVoluntario where codVol = @codVol;";
+            comm.CommandText = "delete from tbVoluntario where codvol = @codvol;";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
@@ -478,27 +440,116 @@ namespace GPSFrancisco
             return resp;
         }
 
-        public int alterarVolunrarios(string nome) {
+        public int alterarVolunrarios(string nome, string email, string telCel, string endereco,
+            string cep, string complemento, string numero, string bairro, string cidade, string estado,
+            int codAtr, DateTime data, DateTime hora, int status, byte[] foto, int codVol) {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "update table from tbVoluntario where nome = @nome;";
+            comm.CommandText = "update tbVoluntario set nome =@nome,email = @email,telCel = @telcel,endereco = @endereco" +
+                ",numero = @numero,cep = @cep,complemento = @complemento,bairro = @bairro,cidade = @cidade,estado = @estado, codAtr = @codAtr, " +
+                "data_ = @data_ ,hora = @hora, status_ = @status_, foto = @foto where codvol = @codvol";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = nome;
+            comm.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = email;
+            comm.Parameters.Add("@telCel", MySqlDbType.VarChar, 15).Value = telCel;
+            comm.Parameters.Add("@endereco", MySqlDbType.VarChar, 100).Value = endereco;
+            comm.Parameters.Add("@numero", MySqlDbType.VarChar, 9).Value = numero;
+            comm.Parameters.Add("@cep", MySqlDbType.VarChar, 9).Value = cep;
+            comm.Parameters.Add("@complemento", MySqlDbType.VarChar, 100).Value = complemento;
+            comm.Parameters.Add("@bairro", MySqlDbType.VarChar, 100).Value = bairro;
+            comm.Parameters.Add("@cidade", MySqlDbType.VarChar, 100).Value = cidade;
+            comm.Parameters.Add("@estado", MySqlDbType.VarChar, 2).Value = estado;
+            comm.Parameters.Add("@codAtr", MySqlDbType.Int32).Value = codigoAtribuicao;
+            comm.Parameters.Add("@data_", MySqlDbType.Datetime).Value = data;
+            comm.Parameters.Add("@hora", MySqlDbType.Datetime).Value = hora;
+            comm.Parameters.Add("@status_", MySqlDbType.Int32).Value = status;
+            comm.Parameters.Add("@foto", MySqlDbType.LongBlob).Value = foto;
+            comm.Parameters.Add("@codvol", MySqlDbType.Int32).Value = codVol;
 
-            comm.Parameters.Add("@nome", MySqlDbType.VarChar,100).Value = nome;
             comm.Connection = conexao.ObterConexao();
 
             int resp = comm.ExecuteNonQuery();
+
+            conexao.FecharConexao();
 
             return resp;
         }
 
 
+        public string retornaCaminho(int codVol) {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select foto from tbvoluntario where codvol = @codvol;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@codVol", MySqlDbType.Int32).Value = codVol;
+
+            comm.Connection = conexao.ObterConexao();
+
+            MySqlDataReader DR = comm.ExecuteReader();
+            DR.Read();
+
+            caminhoFoto = Convert.ToString(DR.GetValue(0));
+
+            conexao.FecharConexao();
+            //public void carregaImagem()
+            //{
+            //    MySqlCommand comm = new MySqlCommand();
+            //    string sql = "SELECT * FROM tbimagem";
+            //    MySqlDataAdapter DA = new MySqlDataAdapter(sql, conexao.ObterConexao());
+            //    DataTable dt = new DataTable();
+
+            //    if (DA.Fill(dt) < 1)
+            //    {
+            //        MessageBox.Show("Sem registros no banco de dados");
+            //    }
+            //    else
+            //    {
+
+            //        foreach (DataRow dr in dt.Rows)
+            //        {
+            //            dgvFotos.Rows.Add(dr.ItemArray);
+            //        }
+
+            //        DA.Dispose();
+            //    }
+
+            //    conexao.FecharConexao();
+            //}
+
+            //private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+            //{
+            //    string nome = dgvFotos.SelectedRows[0].Cells[0].Value.ToString();
+
+            //    MySqlCommand comm = new MySqlCommand();
+            //    string sql = $"SELECT * FROM tbimagem where codImg like {nome}";
+            //    MySqlDataAdapter DA = new MySqlDataAdapter(sql, conexao.ObterConexao());
+            //    DataTable dt = new DataTable();
+            //    DA.Fill(dt);
+            //    byte[] image = (byte[])dt.Rows[0][2];
+            //    MemoryStream ms = new MemoryStream(image);
+            //    picFotos.Image = Image.FromStream(ms);
+
+            //    conexao.FecharConexao();
+            //}
+
+
+            return caminhoFoto;
+        }
+
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            int resp = alterarVolunrarios(txtNome.Text);
+            if (pcbFotoVoluntario.Image != null)
+            {
+                FileStream fs = new FileStream(retornaCaminho(Convert.ToInt32(txtCodigo.Text)), FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
 
-            if (resp == 1)
+                imagem_byte = br.ReadBytes((int)fs.Length);
+            }
+            if (alterarVolunrarios(txtNome.Text, txtEmail.Text, mkdTelefone.Text, txtEndereco.Text, mkdCEP.Text, txtComplemento.Text, txtNumero.Text, txtBairro.Text, txtCidade.Text, cbxEstado.Text, codigoAtribuicao, dtpData.Value
+                , dtpHora.Value, cbStatus.Checked ? 1 : 0, imagem_byte, Convert.ToInt32(txtCodigo.Text)
+                ) == 1)
             {
                 MessageBox.Show("Alterado com sucesso", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limparCampos();
