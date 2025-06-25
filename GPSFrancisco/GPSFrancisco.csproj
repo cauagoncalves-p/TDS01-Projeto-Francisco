@@ -111,6 +111,12 @@
     <Compile Include="frmAtribuicao.Designer.cs">
       <DependentUpon>frmAtribuicao.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCadastraProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastraProduto.Designer.cs">
+      <DependentUpon>frmCadastraProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCalendario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,12 @@
     </Compile>
     <Compile Include="frmDataGridView.Designer.cs">
       <DependentUpon>frmDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGerenciarUnidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGerenciarUnidades.Designer.cs">
+      <DependentUpon>frmGerenciarUnidades.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGerenciarUsuarios.cs">
       <SubType>Form</SubType>
@@ -182,6 +194,9 @@
     <EmbeddedResource Include="frmAtribuicao.resx">
       <DependentUpon>frmAtribuicao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastraProduto.resx">
+      <DependentUpon>frmCadastraProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCalendario.resx">
       <DependentUpon>frmCalendario.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDataGridView.resx">
       <DependentUpon>frmDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGerenciarUnidades.resx">
+      <DependentUpon>frmGerenciarUnidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGerenciarUsuarios.resx">
       <DependentUpon>frmGerenciarUsuarios.cs</DependentUpon>
