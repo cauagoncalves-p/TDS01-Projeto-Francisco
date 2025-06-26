@@ -42,7 +42,7 @@
             // picFotos
             // 
             this.picFotos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picFotos.Location = new System.Drawing.Point(90, 39);
+            this.picFotos.Location = new System.Drawing.Point(22, 36);
             this.picFotos.Name = "picFotos";
             this.picFotos.Size = new System.Drawing.Size(532, 221);
             this.picFotos.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(461, 341);
+            this.btnSalvar.Location = new System.Drawing.Point(393, 336);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(161, 50);
             this.btnSalvar.TabIndex = 2;
@@ -59,7 +59,7 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(461, 414);
+            this.btnLimpar.Location = new System.Drawing.Point(393, 409);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(161, 50);
             this.btnLimpar.TabIndex = 3;
@@ -68,7 +68,7 @@
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(461, 482);
+            this.btnVoltar.Location = new System.Drawing.Point(393, 465);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(161, 50);
             this.btnVoltar.TabIndex = 4;
@@ -83,7 +83,7 @@
             this.dgvFotos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigo,
             this.nome});
-            this.dgvFotos.Location = new System.Drawing.Point(53, 356);
+            this.dgvFotos.Location = new System.Drawing.Point(22, 360);
             this.dgvFotos.Name = "dgvFotos";
             this.dgvFotos.ReadOnly = true;
             this.dgvFotos.Size = new System.Drawing.Size(355, 153);
@@ -110,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 556);
+            this.ClientSize = new System.Drawing.Size(567, 556);
             this.Controls.Add(this.dgvFotos);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.btnLimpar);

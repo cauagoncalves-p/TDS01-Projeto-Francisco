@@ -43,7 +43,7 @@
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(464, 47);
+            this.lblNome.Location = new System.Drawing.Point(353, 31);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(35, 13);
             this.lblNome.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(352, 83);
+            this.txtNome.Location = new System.Drawing.Point(241, 67);
             this.txtNome.Multiline = true;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(281, 20);
@@ -60,7 +60,7 @@
             // picFotos
             // 
             this.picFotos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picFotos.Location = new System.Drawing.Point(318, 140);
+            this.picFotos.Location = new System.Drawing.Point(183, 129);
             this.picFotos.Name = "picFotos";
             this.picFotos.Size = new System.Drawing.Size(402, 273);
             this.picFotos.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // txtBuscaFotos
             // 
-            this.txtBuscaFotos.Location = new System.Drawing.Point(244, 442);
+            this.txtBuscaFotos.Location = new System.Drawing.Point(133, 426);
             this.txtBuscaFotos.Multiline = true;
             this.txtBuscaFotos.Name = "txtBuscaFotos";
             this.txtBuscaFotos.Size = new System.Drawing.Size(538, 20);
@@ -121,7 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1070, 622);
+            this.ClientSize = new System.Drawing.Size(790, 622);
             this.Controls.Add(this.btnInserirFotos);
             this.Controls.Add(this.btnSalvarFotos);
             this.Controls.Add(this.btnPesquisar);

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGerenciarUnidades));
             this.gpbVoluntario = new System.Windows.Forms.GroupBox();
+            this.lblUnidadeMedida = new System.Windows.Forms.Label();
+            this.txtUnidade = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.lblDescricao = new System.Windows.Forms.Label();
@@ -42,8 +44,6 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
-            this.lblUnidadeMedida = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.gpbVoluntario.SuspendLayout();
             this.pnlCRUD.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +51,7 @@
             // gpbVoluntario
             // 
             this.gpbVoluntario.Controls.Add(this.lblUnidadeMedida);
-            this.gpbVoluntario.Controls.Add(this.textBox1);
+            this.gpbVoluntario.Controls.Add(this.txtUnidade);
             this.gpbVoluntario.Controls.Add(this.lblCodigo);
             this.gpbVoluntario.Controls.Add(this.txtCodigoBarras);
             this.gpbVoluntario.Controls.Add(this.lblDescricao);
@@ -63,6 +63,23 @@
             this.gpbVoluntario.TabIndex = 15;
             this.gpbVoluntario.TabStop = false;
             this.gpbVoluntario.Text = "Informações da quantidade";
+            // 
+            // lblUnidadeMedida
+            // 
+            this.lblUnidadeMedida.AutoSize = true;
+            this.lblUnidadeMedida.Location = new System.Drawing.Point(237, 120);
+            this.lblUnidadeMedida.Name = "lblUnidadeMedida";
+            this.lblUnidadeMedida.Size = new System.Drawing.Size(69, 20);
+            this.lblUnidadeMedida.TabIndex = 13;
+            this.lblUnidadeMedida.Text = "Unidade";
+            // 
+            // txtUnidade
+            // 
+            this.txtUnidade.Location = new System.Drawing.Point(240, 155);
+            this.txtUnidade.MaxLength = 10;
+            this.txtUnidade.Name = "txtUnidade";
+            this.txtUnidade.Size = new System.Drawing.Size(66, 26);
+            this.txtUnidade.TabIndex = 12;
             // 
             // lblCodigo
             // 
@@ -121,6 +138,7 @@
             this.btnCadastrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCadastrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // btnNovo
             // 
@@ -134,6 +152,7 @@
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // pnlCRUD
             // 
@@ -162,6 +181,7 @@
             this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // btnLimpar
             // 
@@ -202,23 +222,6 @@
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAlterar.UseVisualStyleBackColor = true;
             // 
-            // lblUnidadeMedida
-            // 
-            this.lblUnidadeMedida.AutoSize = true;
-            this.lblUnidadeMedida.Location = new System.Drawing.Point(237, 120);
-            this.lblUnidadeMedida.Name = "lblUnidadeMedida";
-            this.lblUnidadeMedida.Size = new System.Drawing.Size(69, 20);
-            this.lblUnidadeMedida.TabIndex = 13;
-            this.lblUnidadeMedida.Text = "Unidade";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(240, 155);
-            this.textBox1.MaxLength = 2;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(66, 26);
-            this.textBox1.TabIndex = 12;
-            // 
             // frmGerenciarUnidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,6 +253,6 @@
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Label lblUnidadeMedida;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtUnidade;
     }
 }

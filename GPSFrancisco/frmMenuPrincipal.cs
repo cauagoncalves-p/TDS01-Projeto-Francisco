@@ -57,5 +57,13 @@ namespace GPSFrancisco
             frmGerenciaVoluntario.ShowDialog();
             this.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCadastraProduto frmCadastraProduto = new frmCadastraProduto();   
+            frmCadastraProduto.ShowDialog();
+            this.Show();
+        }
     }
 }

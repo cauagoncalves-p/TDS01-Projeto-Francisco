@@ -43,7 +43,7 @@
             // 
             this.lblUsuairo.AutoSize = true;
             this.lblUsuairo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuairo.Location = new System.Drawing.Point(438, 73);
+            this.lblUsuairo.Location = new System.Drawing.Point(387, 71);
             this.lblUsuairo.Name = "lblUsuairo";
             this.lblUsuairo.Size = new System.Drawing.Size(74, 24);
             this.lblUsuairo.TabIndex = 0;
@@ -53,7 +53,7 @@
             // 
             this.lblSenha.AutoSize = true;
             this.lblSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSenha.Location = new System.Drawing.Point(438, 175);
+            this.lblSenha.Location = new System.Drawing.Point(387, 173);
             this.lblSenha.Name = "lblSenha";
             this.lblSenha.Size = new System.Drawing.Size(65, 24);
             this.lblSenha.TabIndex = 1;
@@ -62,7 +62,7 @@
             // txtUsuario
             // 
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(442, 121);
+            this.txtUsuario.Location = new System.Drawing.Point(391, 119);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(154, 29);
             this.txtUsuario.TabIndex = 2;
@@ -70,7 +70,7 @@
             // txtSenha
             // 
             this.txtSenha.Font = new System.Drawing.Font("Wingdings", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.txtSenha.Location = new System.Drawing.Point(442, 217);
+            this.txtSenha.Location = new System.Drawing.Point(391, 215);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = 'l';
             this.txtSenha.Size = new System.Drawing.Size(156, 29);
@@ -79,7 +79,7 @@
             // btnEntrar
             // 
             this.btnEntrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEntrar.Location = new System.Drawing.Point(442, 266);
+            this.btnEntrar.Location = new System.Drawing.Point(391, 266);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(105, 35);
             this.btnEntrar.TabIndex = 4;
@@ -90,7 +90,7 @@
             // btnConectar
             // 
             this.btnConectar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConectar.Location = new System.Drawing.Point(596, 266);
+            this.btnConectar.Location = new System.Drawing.Point(517, 266);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(105, 35);
             this.btnConectar.TabIndex = 5;
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(627, 450);
             this.Controls.Add(this.pcbLogo);
             this.Controls.Add(this.btnConectar);
             this.Controls.Add(this.btnEntrar);

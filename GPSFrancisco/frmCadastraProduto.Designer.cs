@@ -53,13 +53,13 @@
             this.lblDescricao = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.gpbVoluntario = new System.Windows.Forms.GroupBox();
-            this.lblValidade = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.pcbCodigoBarras = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblQuantidade = new System.Windows.Forms.Label();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pcbCodigoBarras = new System.Windows.Forms.PictureBox();
+            this.lblValidade = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFotoProduto)).BeginInit();
             this.pnlCRUD.SuspendLayout();
             this.gpbVoluntario.SuspendLayout();
@@ -89,6 +89,7 @@
             this.btnInserirProduto.Size = new System.Drawing.Size(59, 51);
             this.btnInserirProduto.TabIndex = 24;
             this.btnInserirProduto.UseVisualStyleBackColor = true;
+            this.btnInserirProduto.Click += new System.EventHandler(this.btnInserirProduto_Click);
             // 
             // pcbFotoProduto
             // 
@@ -111,40 +112,6 @@
             // cbxUnidade
             // 
             this.cbxUnidade.FormattingEnabled = true;
-            this.cbxUnidade.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AP",
-            "AM",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MT",
-            "MS",
-            "MG",
-            "PA",
-            "PB",
-            "PR",
-            "PE",
-            "PI",
-            "RJ",
-            "RN",
-            "RS",
-            "RO",
-            "RR",
-            "SC",
-            "SP",
-            "SE",
-            "TO",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""});
             this.cbxUnidade.Location = new System.Drawing.Point(576, 204);
             this.cbxUnidade.Name = "cbxUnidade";
             this.cbxUnidade.Size = new System.Drawing.Size(138, 28);
@@ -162,6 +129,7 @@
             this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // btnLimpar
             // 
@@ -199,7 +167,7 @@
             this.pnlCRUD.Controls.Add(this.btnAlterar);
             this.pnlCRUD.Controls.Add(this.btnCadastrar);
             this.pnlCRUD.Controls.Add(this.btnNovo);
-            this.pnlCRUD.Location = new System.Drawing.Point(24, 595);
+            this.pnlCRUD.Location = new System.Drawing.Point(24, 493);
             this.pnlCRUD.Name = "pnlCRUD";
             this.pnlCRUD.Size = new System.Drawing.Size(960, 65);
             this.pnlCRUD.TabIndex = 14;
@@ -361,22 +329,32 @@
             this.gpbVoluntario.TabStop = false;
             this.gpbVoluntario.Text = "Informações do produto ";
             // 
-            // lblValidade
+            // pcbCodigoBarras
             // 
-            this.lblValidade.AutoSize = true;
-            this.lblValidade.Location = new System.Drawing.Point(329, 360);
-            this.lblValidade.Name = "lblValidade";
-            this.lblValidade.Size = new System.Drawing.Size(71, 20);
-            this.lblValidade.TabIndex = 27;
-            this.lblValidade.Text = "Validade";
+            this.pcbCodigoBarras.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pcbCodigoBarras.Location = new System.Drawing.Point(473, 77);
+            this.pcbCodigoBarras.Name = "pcbCodigoBarras";
+            this.pcbCodigoBarras.Size = new System.Drawing.Size(271, 42);
+            this.pcbCodigoBarras.TabIndex = 32;
+            this.pcbCodigoBarras.TabStop = false;
             // 
-            // dateTimePicker1
+            // label1
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(333, 395);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 26);
-            this.dateTimePicker1.TabIndex = 26;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(469, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 20);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Codigo de barras";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(811, 180);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(149, 31);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Inserir";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // lblQuantidade
             // 
@@ -394,38 +372,28 @@
             this.txtQuantidade.Size = new System.Drawing.Size(123, 26);
             this.txtQuantidade.TabIndex = 28;
             // 
-            // button1
+            // lblValidade
             // 
-            this.button1.Location = new System.Drawing.Point(811, 180);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 31);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Inserir";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lblValidade.AutoSize = true;
+            this.lblValidade.Location = new System.Drawing.Point(329, 360);
+            this.lblValidade.Name = "lblValidade";
+            this.lblValidade.Size = new System.Drawing.Size(71, 20);
+            this.lblValidade.TabIndex = 27;
+            this.lblValidade.Text = "Validade";
             // 
-            // label1
+            // dateTimePicker1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(469, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 20);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "Codigo de barras";
-            // 
-            // pcbCodigoBarras
-            // 
-            this.pcbCodigoBarras.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pcbCodigoBarras.Location = new System.Drawing.Point(473, 77);
-            this.pcbCodigoBarras.Name = "pcbCodigoBarras";
-            this.pcbCodigoBarras.Size = new System.Drawing.Size(271, 42);
-            this.pcbCodigoBarras.TabIndex = 32;
-            this.pcbCodigoBarras.TabStop = false;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(333, 395);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(121, 26);
+            this.dateTimePicker1.TabIndex = 26;
             // 
             // frmCadastraProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 672);
+            this.ClientSize = new System.Drawing.Size(1033, 575);
             this.Controls.Add(this.pnlCRUD);
             this.Controls.Add(this.gpbVoluntario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

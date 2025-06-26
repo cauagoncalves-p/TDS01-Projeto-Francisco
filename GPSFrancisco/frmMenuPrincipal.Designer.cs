@@ -33,13 +33,14 @@
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnVoluntarios = new System.Windows.Forms.Button();
             this.btnAtribuicao = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnVoltar
             // 
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoltar.Image = ((System.Drawing.Image)(resources.GetObject("btnVoltar.Image")));
-            this.btnVoltar.Location = new System.Drawing.Point(564, 380);
+            this.btnVoltar.Location = new System.Drawing.Point(621, 273);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(116, 58);
             this.btnVoltar.TabIndex = 1;
@@ -89,11 +90,26 @@
             this.btnAtribuicao.UseVisualStyleBackColor = true;
             this.btnAtribuicao.Click += new System.EventHandler(this.btnAtribuicao_Click);
             // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(583, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(154, 222);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "&Produtos";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 450);
+            this.ClientSize = new System.Drawing.Size(744, 355);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAtribuicao);
             this.Controls.Add(this.btnVoluntarios);
             this.Controls.Add(this.btnUsuarios);
@@ -111,5 +127,6 @@
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnVoluntarios;
         private System.Windows.Forms.Button btnAtribuicao;
+        private System.Windows.Forms.Button button1;
     }
 }

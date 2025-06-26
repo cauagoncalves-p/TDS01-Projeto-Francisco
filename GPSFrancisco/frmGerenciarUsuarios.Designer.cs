@@ -64,7 +64,7 @@
             this.pnlCRUD.Controls.Add(this.btnAlterar);
             this.pnlCRUD.Controls.Add(this.btnCadastrar);
             this.pnlCRUD.Controls.Add(this.btnNovo);
-            this.pnlCRUD.Location = new System.Drawing.Point(15, 511);
+            this.pnlCRUD.Location = new System.Drawing.Point(24, 375);
             this.pnlCRUD.Name = "pnlCRUD";
             this.pnlCRUD.Size = new System.Drawing.Size(867, 65);
             this.pnlCRUD.TabIndex = 7;
@@ -184,7 +184,7 @@
             this.gpbInformacoesUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpbInformacoesUsuarios.Location = new System.Drawing.Point(24, 33);
             this.gpbInformacoesUsuarios.Name = "gpbInformacoesUsuarios";
-            this.gpbInformacoesUsuarios.Size = new System.Drawing.Size(851, 318);
+            this.gpbInformacoesUsuarios.Size = new System.Drawing.Size(865, 318);
             this.gpbInformacoesUsuarios.TabIndex = 6;
             this.gpbInformacoesUsuarios.TabStop = false;
             this.gpbInformacoesUsuarios.Text = "Informações do usuário";
@@ -311,7 +311,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 610);
+            this.ClientSize = new System.Drawing.Size(912, 460);
             this.Controls.Add(this.pnlCRUD);
             this.Controls.Add(this.gpbInformacoesUsuarios);
             this.Name = "frmGerenciarUsuarios";

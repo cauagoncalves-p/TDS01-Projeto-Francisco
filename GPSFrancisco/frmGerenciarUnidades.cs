@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace GPSFrancisco
 {
@@ -15,6 +16,133 @@ namespace GPSFrancisco
         public frmGerenciarUnidades()
         {
             InitializeComponent();
+            desabilitarCampos();
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCadastraProduto produtos = new frmCadastraProduto(); 
+            produtos.ShowDialog();
+            this.Show();
+        }
+
+        private void habilitarCampos() {
+            txtCodigoBarras.Enabled = false;
+            txtDescricao.Enabled = true;
+
+            btnAlterar.Enabled = false;
+            btnCadastrar.Enabled = true;
+            txtUnidade.Enabled = true;
+            btnLimpar.Enabled = false;
+            btnExcluir.Enabled = false;
+
+            btnNovo.Enabled = false;
+            txtDescricao.Focus();
+        }
+
+        private void desabilitarCampos()
+        {
+
+            txtCodigoBarras.Enabled = false;    
+            txtDescricao.Enabled = false;
+
+            btnAlterar.Enabled = false;
+            btnCadastrar.Enabled = false;
+            txtUnidade.Enabled = false;
+            btnLimpar.Enabled = false;
+            btnExcluir.Enabled = false;
+        }
+
+        private void limparCampos() {
+            txtUnidade.Clear();
+            txtDescricao.Clear();
+            txtCodigoBarras.Clear();
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            habilitarCampos();
+        }
+
+        public int cadastrarProduto(string descricao, string unidade)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "insert into tbUnidades(descricao, unidade) values (@descricao, @unidade)";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@descricao", MySqlDbType.VarChar,50).Value = descricao;
+            comm.Parameters.Add("@unidade", MySqlDbType.VarChar,2).Value = unidade;
+
+            comm.Connection = conexao.ObterConexao();
+
+            int resp = comm.ExecuteNonQuery();
+
+            conexao.FecharConexao();
+
+            return resp;
+        }
+
+
+        private int alterarProduto(string descricao, string unidade, int codUni)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "update tbUnidades set descricao = @descricao, unidade = @unidade where codUni = @codUni";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 50).Value = descricao;
+            comm.Parameters.Add("@unidade", MySqlDbType.VarChar, 2).Value = unidade;
+            comm.Parameters.Add("@codUni", MySqlDbType.Int32).Value = codUni;
+
+
+            comm.Connection = conexao.ObterConexao();
+
+            int resp = comm.ExecuteNonQuery();
+
+            conexao.FecharConexao();
+
+            return resp;
+        }
+
+        private int alterarProduto(int codUni)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "delete from tbUnidade where codUni = codUni";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@codUni", MySqlDbType.Int32).Value = codUni;
+
+
+            comm.Connection = conexao.ObterConexao();
+
+            int resp = comm.ExecuteNonQuery();
+
+            conexao.FecharConexao();
+
+            return resp;
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            habilitarCampos();
+
+            if (txtDescricao.Text.Equals("") || txtUnidade.Text.Equals(""))
+            {
+                MessageBox.Show("Favor inserir valores");
+                txtDescricao.Focus();
+            }
+
+            else {
+
+                if (cadastrarProduto(txtDescricao.Text, txtUnidade.Text) == 1) {
+                    MessageBox.Show("Cadastrado com sucesso");
+                    desabilitarCampos();
+                    limparCampos();
+                }
+            }
         }
     }
 }
