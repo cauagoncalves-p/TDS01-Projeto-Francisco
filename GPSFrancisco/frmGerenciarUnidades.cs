@@ -19,6 +19,14 @@ namespace GPSFrancisco
             desabilitarCampos();
         }
 
+        public frmGerenciarUnidades(string descricao)
+        {
+            InitializeComponent();
+            desabilitarCampos();
+            PesquisarPorNome(txtDescricao.Text);
+            txtUnidade.Text = descricao;
+        }
+
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -68,7 +76,7 @@ namespace GPSFrancisco
         public int cadastrarProduto(string descricao, string unidade)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "insert into tbUnidades(descricao, unidade) values (@descricao, @unidade)";
+            comm.CommandText = "insert into tbunidades(descricao, unidade) values (@descricao, @unidade)";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
@@ -88,7 +96,7 @@ namespace GPSFrancisco
         private int alterarProduto(string descricao, string unidade, int codUni)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "update tbUnidades set descricao = @descricao, unidade = @unidade where codUni = @codUni";
+            comm.CommandText = "update tbunidades set descricao = @descricao, unidade = @unidade where codUni = @codUni";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
@@ -109,7 +117,7 @@ namespace GPSFrancisco
         private int alterarProduto(int codUni)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "delete from tbUnidade where codUni = codUni";
+            comm.CommandText = "delete from tbunidades where codUni = codUni";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
@@ -143,6 +151,28 @@ namespace GPSFrancisco
                     limparCampos();
                 }
             }
+        }
+
+        public void PesquisarPorNome(string descricao)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = $"SELECT * from tbunidades where descricao = @descricao";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@descricao", MySqlDbType.VarChar,50).Value = descricao;
+            comm.Connection = conexao.ObterConexao();
+
+            MySqlDataReader DR = comm.ExecuteReader();
+
+            DR.Read();
+
+            txtCodigoBarras.Text = Convert.ToString(DR.GetInt32(0));
+            txtDescricao.Text = Convert.ToString(DR.GetString(1));
+            txtUnidade.Text = Convert.ToString(DR.GetString(2));
+
+            conexao.FecharConexao();
+
         }
     }
 }
