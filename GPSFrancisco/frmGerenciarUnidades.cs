@@ -22,15 +22,16 @@ namespace GPSFrancisco
         public frmGerenciarUnidades(string descricao)
         {
             InitializeComponent();
-            desabilitarCampos();
+            habilitarCamposPesquisar();
+            txtDescricao.Text = descricao;
             PesquisarPorNome(txtDescricao.Text);
-            txtUnidade.Text = descricao;
+           
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmCadastraProduto produtos = new frmCadastraProduto(); 
+            frmCadastraProduto produtos = new frmCadastraProduto();
             produtos.ShowDialog();
             this.Show();
         }
@@ -48,6 +49,23 @@ namespace GPSFrancisco
             btnNovo.Enabled = false;
             txtDescricao.Focus();
         }
+
+
+        private void habilitarCamposPesquisar()
+        {
+            txtCodigoBarras.Enabled = false;
+            txtDescricao.Enabled = true;
+
+            btnAlterar.Enabled = true;
+            btnCadastrar.Enabled = false;
+            txtUnidade.Enabled = true;
+            btnLimpar.Enabled = true;
+            btnExcluir.Enabled = true;
+
+            btnNovo.Enabled = false;
+            txtDescricao.Focus();
+        }
+
 
         private void desabilitarCampos()
         {
@@ -96,13 +114,13 @@ namespace GPSFrancisco
         private int alterarProduto(string descricao, string unidade, int codUni)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "update tbunidades set descricao = @descricao, unidade = @unidade where codUni = @codUni";
+            comm.CommandText = "update tbunidades set descricao = @descricao, unidade = @unidade where codUnid = @codUnid";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
             comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 50).Value = descricao;
             comm.Parameters.Add("@unidade", MySqlDbType.VarChar, 2).Value = unidade;
-            comm.Parameters.Add("@codUni", MySqlDbType.Int32).Value = codUni;
+            comm.Parameters.Add("@codUnid", MySqlDbType.Int32).Value = codUni;
 
 
             comm.Connection = conexao.ObterConexao();
@@ -114,14 +132,14 @@ namespace GPSFrancisco
             return resp;
         }
 
-        private int alterarProduto(int codUni)
+        private int excluirUnidade(int codUni)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "delete from tbunidades where codUni = codUni";
+            comm.CommandText = "delete from tbunidades where codUnid = codUnid";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
-            comm.Parameters.Add("@codUni", MySqlDbType.Int32).Value = codUni;
+            comm.Parameters.Add("@codUnid", MySqlDbType.Int32).Value = codUni;
 
 
             comm.Connection = conexao.ObterConexao();
@@ -156,14 +174,15 @@ namespace GPSFrancisco
         public void PesquisarPorNome(string descricao)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = $"SELECT * from tbunidades where descricao = @descricao";
+            comm.CommandText = "SELECT * from tbunidades where descricao = @descricao";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
             comm.Parameters.Add("@descricao", MySqlDbType.VarChar,50).Value = descricao;
             comm.Connection = conexao.ObterConexao();
 
-            MySqlDataReader DR = comm.ExecuteReader();
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
 
             DR.Read();
 
@@ -173,6 +192,41 @@ namespace GPSFrancisco
 
             conexao.FecharConexao();
 
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            DialogResult excluir = MessageBox.Show("Deseja excluir mesmo?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (DialogResult.Yes == excluir)
+            {
+                if (excluirUnidade(Convert.ToInt32(txtCodigoBarras.Text)) == 1)
+                {
+                    MessageBox.Show("Excluído com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao excluir", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }   
+            }
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            if (alterarProduto(txtDescricao.Text, txtUnidade.Text, Convert.ToInt32(txtCodigoBarras.Text)) == 1)
+            {
+                MessageBox.Show("Alterado com sucesso");
+                limparCampos();
+            }
+            else {
+                MessageBox.Show("Erro ao excluir", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            limparCampos();
         }
     }
 }

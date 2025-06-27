@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GenCode128;
+using QRCoder;
 
 namespace GPSFrancisco
 {
@@ -58,7 +60,21 @@ namespace GPSFrancisco
             }
 
             conexao.FecharConexao();
-            
+
         }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCodigoBarras_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) {
+                Image image = Code128Rendering.MakeBarcodeImage(txtCodigoBarras.Text, 2, true);
+                pcbCodigoBarras.Image = image;
+            
+            }
         }
     }
+}
