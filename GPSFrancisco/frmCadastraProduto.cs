@@ -63,6 +63,74 @@ namespace GPSFrancisco
 
         }
 
+        int codigoUnidade;
+        private int cadastrarProdutos(int codBarras, string descricao, int quantidade, string lote, int codigoUnidade, DateTime dataEntrada
+            , DateTime horaEntrada, DateTime validade) {
+
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "insert into tbProdutos (codBarras,descricao,quantidade,lote,dataEntr,horaEnt,validade,codUnid) values (@codBarras,@descricao,@quantidade,@lote,@dataEntr,@horaEnt,@validade,@codUnid)";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@codBarras",MySqlDbType.Int32).Value = codBarras;
+            comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = descricao;
+            comm.Parameters.Add("@quantidade", MySqlDbType.Int32).Value = quantidade;
+            comm.Parameters.Add("@lote", MySqlDbType.VarChar,10).Value = lote;
+            comm.Parameters.Add("@dataEntr", MySqlDbType.Datetime).Value = dataEntrada;
+            comm.Parameters.Add("@horaEntr", MySqlDbType.Datetime).Value = horaEntrada;
+            comm.Parameters.Add("@validade", MySqlDbType.Datetime).Value = validade;
+            comm.Parameters.Add("@codUnid", MySqlDbType.Int32).Value = codigoUnidade;
+
+            comm.Connection = conexao.ObterConexao();
+
+            int resp = comm.ExecuteNonQuery();
+
+            return resp;
+
+        }
+        private int excluirProdutos (int codBarras)
+        {
+
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "delete from tbProdutos where codBarras = @codBarras";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@codBarras", MySqlDbType.Int32).Value = codBarras;
+            
+            comm.Connection = conexao.ObterConexao();
+
+            int resp = comm.ExecuteNonQuery();
+
+            return resp;
+        }
+
+        private int AtualizarProdutos(int codBarras, string descricao, int quantidade, string lote, int codigoUnidade, DateTime dataEntrada
+        , DateTime horaEntrada, DateTime validade)
+        {
+
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "update tbProdutos set codBarras = @codBarras,descricao = @descricao,quantidade = @quantidade,lote = @lote,dataEntr = @dataEntr ,horaEntr = @horaEnt, validade = @validade,codUnid = @codUnid";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@codBarras", MySqlDbType.Int32).Value = codBarras;
+            comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = descricao;
+            comm.Parameters.Add("@quantidade", MySqlDbType.Int32).Value = quantidade;
+            comm.Parameters.Add("@lote", MySqlDbType.VarChar, 10).Value = lote;
+            comm.Parameters.Add("@dataEntr", MySqlDbType.Datetime).Value = dataEntrada;
+            comm.Parameters.Add("@horaEntr", MySqlDbType.Datetime).Value = horaEntrada;
+            comm.Parameters.Add("@validade", MySqlDbType.Datetime).Value = validade;
+            comm.Parameters.Add("@codUnid", MySqlDbType.Int32).Value = codigoUnidade;
+
+            comm.Connection = conexao.ObterConexao();
+
+            int resp = comm.ExecuteNonQuery();
+
+            return resp;
+
+        }
+
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
 

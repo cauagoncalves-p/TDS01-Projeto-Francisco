@@ -334,9 +334,10 @@
             // pcbCodigoBarras
             // 
             this.pcbCodigoBarras.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pcbCodigoBarras.Location = new System.Drawing.Point(473, 77);
+            this.pcbCodigoBarras.Location = new System.Drawing.Point(473, 63);
             this.pcbCodigoBarras.Name = "pcbCodigoBarras";
-            this.pcbCodigoBarras.Size = new System.Drawing.Size(271, 42);
+            this.pcbCodigoBarras.Size = new System.Drawing.Size(306, 85);
+            this.pcbCodigoBarras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbCodigoBarras.TabIndex = 32;
             this.pcbCodigoBarras.TabStop = false;
             // 
